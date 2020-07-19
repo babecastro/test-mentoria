@@ -9,5 +9,13 @@
         <module name="test-mentoria" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test-mentoria" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="test-mentoria" options="-parameters" />
+    </option>
   </component>
 </project>
