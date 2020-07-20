@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Barbara Ellen
+ */
 @Entity
 @Table(name="city")
 public class City implements Serializable {
@@ -11,17 +14,28 @@ public class City implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private Integer id;
 
+    @Column(name="city_name")
     private String name;
 
-    private Integer state_of_city;
+    @Column(name="state_of_city")
+    private Integer stateOfCity;
 
-    private String name_state;
+    @Column(name="description_state")
+    private String nameState;
 
+    @Column(name="created_at")
     private Date created_at;
 
+    @Column(name="updated_at")
     private Date updated_at;
+
+    public City() {
+
+    }
 
     public Date getCreated_at() {
         return created_at;
@@ -55,19 +69,31 @@ public class City implements Serializable {
         this.name = name;
     }
 
-    public Integer getState_of_city() {
-        return state_of_city;
+    public Integer getStateOfCity() {
+        return stateOfCity;
     }
 
-    public void setState_of_city(Integer state_of_city) {
-        this.state_of_city = state_of_city;
+    public void setStateOfCity(Integer stateOfCity) {
+        this.stateOfCity = stateOfCity;
     }
 
-    public String getName_state() {
-        return name_state;
+    public String getNameState() {
+        return nameState;
     }
 
-    public void setName_state(String description_state) {
-        this.name_state = description_state;
+    public void setNameState(String nameState) {
+        this.nameState = nameState;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", stateOfCity=" + stateOfCity +
+                ", nameState='" + nameState + '\'' +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                '}';
     }
 }

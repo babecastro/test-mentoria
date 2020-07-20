@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Barbara Ellen
+ */
 @Entity
 @Table(name="state")
 public class State implements Serializable {
@@ -11,14 +14,22 @@ public class State implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private Integer id;
 
+    @Column(name="name")
     private String name;
 
+    @Column(name="created_at")
     private Date created_at;
 
+    @Column(name="updated_at")
     private Date updated_at;
 
+    public State() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -52,4 +63,13 @@ public class State implements Serializable {
         this.updated_at = updated_at;
     }
 
+    @Override
+    public String toString() {
+        return "State{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                '}';
+    }
 }
