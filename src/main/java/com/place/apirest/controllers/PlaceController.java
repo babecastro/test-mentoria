@@ -1,4 +1,4 @@
-package com.place.apirest.resources;
+package com.place.apirest.controllers;
 
 import com.place.apirest.models.Place;
 import com.place.apirest.repository.PlaceRepository;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping(value="/api")
 @Api(value = "API REST Place")
 @CrossOrigin(origins = "*")
-public class PlaceResource {
+public class PlaceController {
 
     @Autowired
     PlaceRepository placeRepository;
