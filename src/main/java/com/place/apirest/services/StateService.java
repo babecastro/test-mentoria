@@ -23,7 +23,7 @@ public class StateService {
         }
     }
 
-    public State showStateByName(String name) throws Exception {
+    public List<State> showStateByName(String name) throws Exception {
         try {
             return stateRepository.findStateByName(name);
         } catch (Exception e) {

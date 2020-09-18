@@ -32,9 +32,9 @@ public class CityController {
         return cityRepository.findCityById(id);
     }
 
-    @GetMapping("/cityName/{name}")
+    @GetMapping("/city-name/{name}")
     @ApiOperation(value="Return cities by name.")
-    public City showCityByName(@PathVariable(value="name") String name) {
+    public List<City> showCityByName(@PathVariable(value="name") String name) {
         return cityRepository.findCityByName(name);
     }
 

@@ -32,9 +32,9 @@ public class StateController {
         return stateService.showStateById(id);
     }
 
-    @GetMapping("/stateName/{name}")
+    @GetMapping("/state-name/{name}")
     @ApiOperation(value="Return state by name.")
-    public State showStateByName(@PathVariable(value="name") String name) throws Exception {
+    public List<State> showStateByName(@PathVariable(value="name") String name) throws Exception {
         return stateService.showStateByName(name);
     }
 

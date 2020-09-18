@@ -33,7 +33,7 @@ public class PlaceController {
         return placeRepository.findPlaceById(id);
     }
 
-    @GetMapping("/placeName/{name}")
+    @GetMapping("/place-name/{name}")
     @ApiOperation(value="Return Place by name.")
     public List<Place> showPlaceByName(@PathVariable(value="name") String name) {
         return placeRepository.findPlaceByName(name);
