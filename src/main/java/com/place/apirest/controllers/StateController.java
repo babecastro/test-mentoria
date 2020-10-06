@@ -22,7 +22,7 @@ public class StateController {
 
     @GetMapping("/state")
     @ApiOperation(value="Return list of States.")
-    public List<State> showState(){
+    public List<State> showState() throws Exception {
         return stateService.showState();
     }
 

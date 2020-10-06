@@ -24,7 +24,7 @@ public class StateServiceTest {
     private StateService stateService;
 
     @Test
-    public void shouldReturnStates() {
+    public void shouldReturnStates() throws Exception {
 
         List<State> entityList = new ArrayList<>();
         Date date = new Date();
@@ -45,11 +45,60 @@ public class StateServiceTest {
     }
 
     @Test
-    public void showStateByName() {
+    public void showStateByName() throws Exception {
         State state1 = Mockito.mock(State.class);
         Mockito.when(state1.getName()).thenReturn("São Paulo");
 
+        List<State> state = stateService.showStateByName(state1.getName());
+        Assert.assertEquals("São Paulo", 1, 1);
 
+        Mockito.verify(stateRepository).findStateByName(state1.getName());
+    }
 
+    @Test
+    public void showStateById() throws Exception {
+        State state = Mockito.mock(State.class);
+        Mockito.when(state.getId()).thenReturn(1);
+
+        State state1 = stateService.showStateById(state.getId());
+        Assert.assertEquals(1, state.getId().longValue());
+
+        Mockito.verify(stateRepository).findStateById(state.getId());
+    }
+
+    @Test
+    public void shouldReturnWrongNumbersOfStates() throws Exception {
+        List<State> entityList = new ArrayList<>();
+
+        State state = Mockito.mock(State.class);
+        Mockito.when(state.getId()).thenReturn(1);
+        entityList.add(state);
+
+        State state1 = Mockito.mock(State.class);
+        Mockito.when(state1.getId()).thenReturn(2);
+        entityList.add(state1);
+
+        Mockito.when(stateRepository.findAll()).thenReturn(entityList);
+
+        List<State> entities = stateService.showState();
+        Assert.assertNotEquals(1, entities.size());
+    }
+
+    @Test
+    public void shouldReturnWrongNameOfState() throws Exception {
+        State state = Mockito.mock(State.class);
+        Mockito.when(state.getName()).thenReturn("São Paulo");
+
+        List<State> state1 = stateService.showStateByName(state.getName());
+        Assert.assertNotEquals("Curitiba", state1.contains(state.getName()));
+    }
+
+    @Test
+    public void shouldReturnWrongIdOfState() throws Exception {
+        State state = Mockito.mock(State.class);
+        Mockito.when(state.getId()).thenReturn(1);
+
+        State state1 = stateService.showStateById(state.getId());
+        Assert.assertNotEquals(2, state.getId().longValue());
     }
 }

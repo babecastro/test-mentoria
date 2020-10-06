@@ -11,8 +11,12 @@ public class StateService {
     @Autowired
     StateRepository stateRepository;
 
-    public List<State> showState () {
-        return stateRepository.findAll();
+    public List<State> showState () throws Exception {
+        try {
+            return stateRepository.findAll();
+        }catch (Exception e) {
+            throw new Exception("Não foi possível localizar. Tente novamente", e);
+        }
     }
 
     public State showStateById(Integer id) throws Exception {
